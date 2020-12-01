@@ -4,7 +4,7 @@ import requests, lxml, re, time
 
 #Windows
 def main_win():
-    sg.theme('Material2')
+    sg.theme('DefaultNoMoreNagging')
 
     layout = [
         [sg.Text('Url to scrap:')],
@@ -16,7 +16,7 @@ def main_win():
     return sg.Window('Wiki Scraper', layout, finalize = True)
 
 def alert_win():
-    sg.theme('Material2')
+    sg.theme('DefaultNoMoreNagging')
 
     alert_layout = [
         [sg.Text('Sorry, this page is blocked for scraping.')],
@@ -24,15 +24,24 @@ def alert_win():
     ] 
     return sg.Window('Scrap Blocked!', alert_layout, finalize = True)
 
+def loading_win():
+    sg.theme('DefaultNoMoreNagging')
+    loading_layout = [
+            [sg.Text('Just a moment please...')]
+        ]
+
+
+    return sg.Window('Scraping...', loading_layout, finalize = True)
+
 #event loop
-main, alert= main_win(), None
+main, alert, loading = main_win(), None, None
 while True:
     win, ev, values = sg.read_all_windows()
+    url = values['url']
+    lang = values['lang']
     if win == main and ev == sg.WINDOW_CLOSED:
         break
     if win == main and ev == 'Scrap':
-        url = values['url']
-        lang = values['lang']
         root = 'https://'+lang+'.wikipedia.org/wiki/'+url
        #2 Check in "robots.txt" if it's ok to scrap this URL.
 
@@ -47,8 +56,10 @@ while True:
             alert = alert_win()
             main.hide()
         else:
-#Scrap
+            loading = loading_win()
             time.sleep(10)
+            loading.hide()
+#Scrap
             page = requests.get(root).text
             soup = BeautifulSoup(page, 'lxml')
             tag = soup.find_all('p')
