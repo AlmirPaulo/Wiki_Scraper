@@ -4,3 +4,5 @@ note_*
 env
 *.txt
 *.html
+Wiki Scraper
+!*.deb
