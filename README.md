@@ -4,7 +4,8 @@ Scrap wikipedia articles easy and quickly, built in Python and with a GUI.
 <img src='https://github.com/AlmirPaulo/Wiki_Scraper/blob/main/wikiscraper.gif'></img>
 
 ## Download and Install
-If you are in a **Linux** system download the .deb file <a href="https://github.com/AlmirPaulo/Wiki_Scraper/raw/main/Wiki%20Scraper.deb" download>here</a>. But if you are in a **Windows** system, hold on! I'm working in your .exe file.
+If you are in a **Linux** system download the .deb file <a href="https://github.com/AlmirPaulo/Wiki_Scraper/raw/main/Wiki%20Scraper.deb" download>here</a>. But if you are in a **Windows** system, download [here](https://github.com/AlmirPaulo/Wiki_Scraper/tree/main/WikiScraper_Windows). It's untested for Windows, let me know how it works for you.
+
 ## Q&A
 
 1. **Why I can't scrap that page?**
